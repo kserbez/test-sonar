@@ -10,7 +10,7 @@ Test task for Generative AI survey.
    dotnet user-secrets set "Stripe:BalanceApiKey" "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
    dotnet user-secrets set "Stripe:BalanceTransactionsApiKey" "txn_1032Rp2eZvKYlo2CpErRBj09"
    dotnet build
-   dotnet run
+   dotnet run --project ./Api/Api.csproj
    ```
 
 ## Endpoints usage
