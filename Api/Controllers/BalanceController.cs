@@ -8,13 +8,11 @@ namespace Api.Controllers
     [Route("balance")]
     public class BalanceController : ControllerBase
     {
-        private readonly IConfiguration _config;
 
         private readonly IStripeConfigurationService _stripeConfigurationService;
 
-        public BalanceController(IConfiguration config, IStripeConfigurationService stripeConfigurationService)
+        public BalanceController(IStripeConfigurationService stripeConfigurationService)
         {
-            _config = config;
             _stripeConfigurationService = stripeConfigurationService;
         }
 
