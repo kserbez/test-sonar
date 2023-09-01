@@ -3,7 +3,6 @@
     public class StripeConfigurationService : IStripeConfigurationService
     {
         private const string STRIPE_BALANCE_API_KEY_SECRET_MANAGER_KEY = "Stripe:BalanceApiKey";
-        private const string STRIPE_BALANCE_TRANSACTIONS_API_KEY_SECRET_MANAGER_KEY = "Stripe:BalanceTransactionsApiKey";
 
         private readonly IConfiguration _config;
 
@@ -21,13 +20,5 @@
             }
         }
 
-        public string BalanceTransacitonsApiKey
-        {
-            get
-            {
-                string result = _config[STRIPE_BALANCE_TRANSACTIONS_API_KEY_SECRET_MANAGER_KEY];
-                return result;
-            }
-        }
     }
 }

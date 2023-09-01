@@ -1,4 +1,6 @@
+using Api.Middleware;
 using Api.Services;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IStripeConfigurationService, StripeConfigurationService>();
+builder.Services.AddScoped <IBalanceProviderService, BalanceProviderService>();
+builder.Services.AddScoped <IBalanceTransactionsService, BalanceTransactionsService>();
+builder.Services.AddScoped<IPaginatorService<BalanceAmount>, PaginatorService<BalanceAmount>>();
+builder.Services.AddScoped<IPaginatorService<BalanceTransaction>, PaginatorService<BalanceTransaction>>();
 
 var app = builder.Build();
 
@@ -17,6 +23,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+    app.UseMiddleware<ExceptionMiddleware>();
 }
 
 app.UseHttpsRedirection();

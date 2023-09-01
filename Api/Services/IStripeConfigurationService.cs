@@ -4,7 +4,5 @@
     {
         string BalanceApiKey { get; }
 
-        string BalanceTransacitonsApiKey { get; }
-
     }
 }
