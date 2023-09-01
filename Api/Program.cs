@@ -16,10 +16,13 @@ builder.Services.AddScoped <IBalanceTransactionsService, BalanceTransactionsServ
 builder.Services.AddScoped<IPaginatorService<BalanceAmount>, PaginatorService<BalanceAmount>>();
 builder.Services.AddScoped<IPaginatorService<BalanceTransaction>, PaginatorService<BalanceTransaction>>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+
+bool isDevelopmentEnvironment = app.Environment.IsDevelopment();
+if (isDevelopmentEnvironment)
 {
     app.UseSwagger();
     app.UseSwaggerUI();
