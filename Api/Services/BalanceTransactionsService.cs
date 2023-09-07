@@ -11,7 +11,7 @@ namespace Api.Services
             _stripeConfigurationService = stripeConfigurationService;
         }
 
-        IEnumerable<BalanceTransaction> IBalanceTransactionsService.GetAllBalanceTransactions()
+        async Task<IEnumerable<BalanceTransaction>> IBalanceTransactionsService.GetAllBalanceTransactions()
         {
             StripeConfiguration.ApiKey = _stripeConfigurationService.BalanceApiKey;
 
@@ -20,7 +20,7 @@ namespace Api.Services
                 Limit = int.MaxValue
             };
             var service = new BalanceTransactionService();
-            StripeList<BalanceTransaction> balanceTransactions = service.List(options);
+            StripeList<BalanceTransaction> balanceTransactions = await service.ListAsync(options);
 
             return balanceTransactions;
         }

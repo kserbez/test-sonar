@@ -4,6 +4,6 @@ namespace Api.Services
 {
     public interface IBalanceTransactionsService
     {
-        IEnumerable<BalanceTransaction> GetAllBalanceTransactions();
+        Task<IEnumerable<BalanceTransaction>> GetAllBalanceTransactions();
     }
 }

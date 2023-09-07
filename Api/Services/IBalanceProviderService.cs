@@ -4,6 +4,6 @@ namespace Api.Services
 {
     public interface IBalanceProviderService
     {
-        Balance GetBalance();
+        Task<Balance> GetBalance();
     }
 }

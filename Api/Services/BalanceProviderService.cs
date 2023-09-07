@@ -11,13 +11,13 @@ namespace Api.Services
             _stripeConfigurationService = stripeConfigurationService;
         }
 
-        public Balance GetBalance()
+        public async Task<Balance> GetBalance()
         {
             string balanceApiKey = _stripeConfigurationService.BalanceApiKey;
             StripeConfiguration.ApiKey = balanceApiKey;
 
             var service = new BalanceService();
-            Balance balance = service.Get();
+            Balance balance = await service.GetAsync();
 
             return balance;
         }
